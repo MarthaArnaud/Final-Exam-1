@@ -1,11 +1,15 @@
 import React from 'react';
 
+ 
+
 function BookForm( props ){
     return(
         <div>
-            {/*
-                Your code goes here
-            */}
+            <form>
+                <label htmlFor="bookName">Enter a book name to search</label>
+                <input type="text" id="bookName"></input>
+                <input type="submit" value="Search"></input>
+            </form>
         </div>
     );
 }

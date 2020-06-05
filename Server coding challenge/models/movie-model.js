@@ -37,6 +37,28 @@ const Movies = {
                 .catch( err => {
                     throw new Error( err );
                 });
+    },
+    getMovieById: function(id){
+        return moviesCollection
+        .findOne({movie_ID:id})
+        .then(movieWithId=>{
+            return movieWithId;
+        })
+        .catch(err=>{
+            return err;
+        })
+    },
+    removeActorFromMovieList: function (id,actor_ID){
+        return moviesCollection
+        .findOneAndRemove({movie_ID:id},{$pop:{actors:actor_ID}})
+        .then(movieToRemoveActor=>{
+            return movieToRemoveActor.populate[{actors}];
+        
+        })
+        .catch(err=>{
+            return err;
+        })
+        
     }
     /*
         Your code goes here
